@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: HostRegexp(`{host:.+}`)
+    - match: HostRegexp(`{kubops.akshatsreeya.online:.+}`)
       middlewares:
         - name: redirecthttps
       kind: Rule
@@ -26,19 +26,19 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: HostRegexp(`{host:^traefikui.*$}`) && PathPrefix(`/`)
+    - match: HostRegexp(`{kubops.akshatsreeya.online:^traefikui.*$}`) && PathPrefix(`/`)
       middlewares:
         - name: admin-basic
       kind: Rule
       services:
         - name: traefik-admin-ui
           port: 8080
-    - match: HostRegexp(`{host:^whoami-demo.*$}`) && PathPrefix(`/`)
+    - match: HostRegexp(`{kubops.akshatsreeya.online:^whoami-demo.*$}`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: whoami
           port: 80
-    - match: Host(`testk8s.local`) && PathPrefix(`/`)
+    - match: kubops.akshatsreeya.online(`testk8s.local`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: whoami
